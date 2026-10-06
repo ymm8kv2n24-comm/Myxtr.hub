@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Hub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0f19;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    padding: 30px 20px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #111827, #172554);
+}
+
+h1 {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #aeb8cc;
+    font-size: 15px;
+}
+
+.search-box {
+    max-width: 600px;
+    margin: 25px auto 0;
+}
+
+input {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    background: #111827;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 20px;
+    justify-content: center;
+}
+
+.categories button {
+    border: none;
+    background: #1e293b;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.categories button:hover {
+    background: #334155;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 10px 20px 50px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #111827;
+    border: 1px solid #263244;
+    border-radius: 18px;
+    padding: 22px;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #64748b;
+}
+
+.icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #9ca3af;
+    font-size: 14px;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+
+.card a {
+    display: inline-block;
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.card a:hover {
+    background: #1d4ed8;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚡ My Hub</h1>
+    <p class="subtitle">Games • Soccer • Movies • Social • AI • YouTube</p>
+
+    <div class="search-box">
+        <input 
+            type="text" 
+            id="search"
+            placeholder="Search your hub..."
+            onkeyup="searchCards()"
+        >
+    </div>
+</header>
+
+<div class="categories">
+    <button onclick="filterCards('all')">All</button>
+    <button onclick="filterCards('games')">🎮 Games</button>
+    <button onclick="filterCards('soccer')">⚽ Soccer</button>
+    <button onclick="filterCards('movies')">🎬 Movies</button>
+    <button onclick="filterCards('social')">📱 Social</button>
+    <button onclick="filterCards('ai')">🤖 AI</button>
+</div>
+
+<div class="container">
+    <div class="grid" id="cards">
+
+        <div class="card games">
+            <div class="icon">🎮</div>
+            <h2>CrazyGames</h2>
+            <p>Play free browser games.</p>
+            <a href="https://www.crazygames.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card games">
+            <div class="icon">🕹️</div>
+            <h2>Poki</h2>
+            <p>Play free online games.</p>
+            <a href="https://poki.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card games">
+            <div class="icon">🏀</div>
+            <h2>Court Games</h2>
+            <p>Find basketball and other sports games.</p>
+            <a href="https://www.crazygames.com/" target="_blank">Play</a>
+        </div>
+
+        <div class="card soccer">
+            <div class="icon">⚽</div>
+            <h2>FIFA+</h2>
+            <p>Football videos, matches and more.</p>
+            <a href="https://www.fifa.com/fifaplus" target="_blank">Open</a>
+        </div>
+
+        <div class="card soccer">
+            <div class="icon">🏆</div>
+            <h2>UEFA</h2>
+            <p>Champions League and European football.</p>
+            <a href="https://www.uefa.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card soccer">
+            <div class="icon">👑</div>
+            <h2>Real Madrid</h2>
+            <p>News, matches and everything Madrid.</p>
+            <a href="https://www.realmadrid.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card soccer">
+            <div class="icon">📺</div>
+            <h2>Soccer YouTube</h2>
+            <p>Watch football videos and highlights.</p>
+            <a href="https://www.youtube.com/" target="_blank">Watch</a>
+        </div>
+
+        <div class="card movies">
+            <div class="icon">🎬</div>
+            <h2>YouTube Movies</h2>
+            <p>Find movies and shows on YouTube.</p>
+            <a href="https://www.youtube.com/movies" target="_blank">Watch</a>
+        </div>
+
+        <div class="card movies">
+            <div class="icon">🍿</div>
+            <h2>Tubi</h2>
+            <p>Free movies and TV shows.</p>
+            <a href="https://tubitv.com/" target="_blank">Watch</a>
+        </div>
+
+        <div class="card movies">
+            <div class="icon">📺</div>
+            <h2>Pluto TV</h2>
+            <p>Free streaming and live channels.</p>
+            <a href="https://pluto.tv/" target="_blank">Watch</a>
+        </div>
+
+        <div class="card social">
+            <div class="icon">▶️</div>
+            <h2>YouTube</h2>
+            <p>Videos, creators and entertainment.</p>
+            <a href="https://www.youtube.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card social">
+            <div class="icon">🎵</div>
+            <h2>TikTok</h2>
+            <p>Short videos and trends.</p>
+            <a href="https://www.tiktok.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card social">
+            <div class="icon">𝕏</div>
+            <h2>X</h2>
+            <p>Posts, news and sports updates.</p>
+            <a href="https://x.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card ai">
+            <div class="icon">🤖</div>
+            <h2>ChatGPT</h2>
+            <p>AI assistant for questions, ideas and school help.</p>
+            <a href="https://chatgpt.com/" target="_blank">Open</a>
+        </div>
+
+        <div class="card ai">
+            <div class="icon">✨</div>
+            <h2>Gemini</h2>
+            <p>Explore another AI assistant.</p>
+            <a href="https://gemini.google.com/" target="_blank">Open</a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    My Hub • Your personal internet dashboard
+</footer>
+
+<script>
+
+function filterCards(category) {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (category === "all" || card.classList.contains(category)) {
+            card.classList.remove("hidden");
+        } else {
+            card.classList.add("hidden");
+        }
+    });
+}
+
+function searchCards() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+            card.classList.remove("hidden");
+        } else {
+            card.classList.add("hidden");
+        }
+    });
+}
+
+</script>
+
+</body>
+</html>
